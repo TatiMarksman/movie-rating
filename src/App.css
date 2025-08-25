@@ -251,12 +251,12 @@
   border: 2px solid rgba(102, 126, 234, 0.3);
 }
 
-.rating-input, .review-input {
+.rating-input {
   margin-bottom: 15px;
   text-align: left;
 }
 
-.rating-input label, .review-input label {
+.rating-input label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -271,17 +271,6 @@
   border-radius: 5px;
   font-size: 16px;
   text-align: center;
-}
-
-.review-textarea {
-  width: 100%;
-  min-height: 80px;
-  padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px;
-  font-family: inherit;
-  resize: vertical;
 }
 
 .rating-form-actions {

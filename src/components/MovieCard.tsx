@@ -3,17 +3,16 @@ import { Movie } from "../types";
 
 interface MovieCardProps {
     movie: Movie;
-    onRateMovie?: (movieId: number, rating: number, review: string) => void;
+    onRateMovie?: (movieId: number, rating: number) => void;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, onRateMovie }) => {
     const [showRatingForm, setShowRatingForm] = useState(false);
     const [userRating, setUserRating] = useState(movie.userRating || 0);
-    const [userReview, setUserReview] = useState(movie.userReview || "");
 
     const handleRateMovie = () => {
         if (onRateMovie && userRating > 0) {
-            onRateMovie(movie.id, userRating, userReview);
+            onRateMovie(movie.id, userRating);
             setShowRatingForm(false);
         }
     };
@@ -77,15 +76,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onRateMovie }) => {
                                 value={userRating}
                                 onChange={(e) => setUserRating(Number(e.target.value))}
                                 className="rating-number"
-                            />
-                        </div>
-                        <div className="review-input">
-                            <label>Your Review:</label>
-                            <textarea
-                                value={userReview}
-                                onChange={(e) => setUserReview(e.target.value)}
-                                placeholder="Share your thoughts about this movie..."
-                                className="review-textarea"
                             />
                         </div>
                         <div className="rating-form-actions">

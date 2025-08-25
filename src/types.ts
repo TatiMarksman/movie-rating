@@ -8,12 +8,4 @@ export interface Movie {
     description: string;
     image: string;
     userRating?: number; // Kullanıcının verdiği puan
-    userReview?: string; // Kullanıcının yorumu
-}
-
-export interface UserRating {
-    movieId: number;
-    rating: number;
-    review: string;
-    date: Date;
 }

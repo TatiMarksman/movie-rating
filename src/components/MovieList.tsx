@@ -11,11 +11,11 @@ const MovieList: React.FC<MovieListProps> = ({ movies: initialMovies }) => {
     const [sortBy, setSortBy] = useState<string>("title");
     const [filterGenre, setFilterGenre] = useState<string>("all");
 
-    const handleRateMovie = (movieId: number, rating: number, review: string) => {
+    const handleRateMovie = (movieId: number, rating: number) => {
         setMovies(prevMovies =>
             prevMovies.map(movie =>
                 movie.id === movieId
-                    ? { ...movie, userRating: rating, userReview: review }
+                    ? { ...movie, userRating: rating }
                     : movie
             )
         );

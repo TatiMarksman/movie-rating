@@ -47,7 +47,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies: initialMovies }) => {
         <div className="movie-list-container">
             <div className="controls">
                 <div className="filter-controls">
-                    <label htmlFor="genre-filter">Tür Filtrele:</label>
+                    <label htmlFor="genre-filter">Filter by Genre:</label>
                     <select
                         id="genre-filter"
                         value={filterGenre}
@@ -56,33 +56,33 @@ const MovieList: React.FC<MovieListProps> = ({ movies: initialMovies }) => {
                     >
                         {getUniqueGenres().map(genre => (
                             <option key={genre} value={genre}>
-                                {genre === "all" ? "Tümü" : genre}
+                                {genre === "all" ? "All" : genre}
                             </option>
                         ))}
                     </select>
                 </div>
 
                 <div className="sort-controls">
-                    <label htmlFor="sort-by">Sırala:</label>
+                    <label htmlFor="sort-by">Sort by:</label>
                     <select
                         id="sort-by"
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
                         className="sort-select"
                     >
-                        <option value="title">İsme Göre</option>
-                        <option value="year">Yıla Göre</option>
-                        <option value="rating">Genel Puana Göre</option>
-                        <option value="userRating">Sizin Puanınıza Göre</option>
+                        <option value="title">By Title</option>
+                        <option value="year">By Year</option>
+                        <option value="rating">By Rating</option>
+                        <option value="userRating">By Your Rating</option>
                     </select>
                 </div>
             </div>
 
             <div className="movie-stats">
-                <p>Toplam {filteredAndSortedMovies.length} film bulundu</p>
+                <p>Found {filteredAndSortedMovies.length} movies</p>
                 {filteredAndSortedMovies.length > 0 && (
                     <p>
-                        Ortalama Puan: {
+                        Average Rating: {
                             (filteredAndSortedMovies.reduce((sum, movie) => sum + movie.rating, 0) / filteredAndSortedMovies.length).toFixed(1)
                         }/10
                     </p>
@@ -101,7 +101,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies: initialMovies }) => {
 
             {filteredAndSortedMovies.length === 0 && (
                 <div className="no-movies">
-                    <p>Bu kriterlere uygun film bulunamadı.</p>
+                    <p>No movies found matching these criteria.</p>
                 </div>
             )}
         </div>

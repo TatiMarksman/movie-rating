@@ -55,8 +55,8 @@ function App() {
     return (
         <div className="App">
             <header className="app-header">
-                <h1>🎬 Film Derecelendirme</h1>
-                <p>En sevdiğiniz filmleri değerlendirin ve yorum yapın</p>
+                <h1>🎬 Movie Rating</h1>
+                <p>Rate and review your favorite movies</p>
             </header>
             <MovieList movies={movies} />
         </div>

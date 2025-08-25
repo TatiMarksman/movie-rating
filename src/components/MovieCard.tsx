@@ -43,14 +43,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onRateMovie }) => {
                 </div>
 
                 <div className="movie-rating">
-                    <span className="rating-label">Genel Puan:</span>
+                    <span className="rating-label">Rating:</span>
                     <div className="stars">{renderStars(movie.rating)}</div>
                     <span className="rating-text">{movie.rating}/10</span>
                 </div>
 
                 {movie.userRating && (
                     <div className="user-rating">
-                        <span className="rating-label">Sizin Puanınız:</span>
+                        <span className="rating-label">Your Rating:</span>
                         <div className="stars">{renderStars(movie.userRating)}</div>
                         <span className="rating-text">{movie.userRating}/10</span>
                     </div>
@@ -61,15 +61,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onRateMovie }) => {
                         className="rate-btn"
                         onClick={() => setShowRatingForm(!showRatingForm)}
                     >
-                        {movie.userRating ? "Puanınızı Güncelleyin" : "Film Puanlayın"}
+                        {movie.userRating ? "Update Rating" : "Rate Movie"}
                     </button>
-                    <button className="details-btn">Detaylar →</button>
+                    <button className="details-btn">Details →</button>
                 </div>
 
                 {showRatingForm && (
                     <div className="rating-form">
                         <div className="rating-input">
-                            <label>Puanınız (1-10):</label>
+                            <label>Your Rating (1-10):</label>
                             <input
                                 type="number"
                                 min="1"
@@ -80,11 +80,11 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onRateMovie }) => {
                             />
                         </div>
                         <div className="review-input">
-                            <label>Yorumunuz:</label>
+                            <label>Your Review:</label>
                             <textarea
                                 value={userReview}
                                 onChange={(e) => setUserReview(e.target.value)}
-                                placeholder="Film hakkında düşüncelerinizi paylaşın..."
+                                placeholder="Share your thoughts about this movie..."
                                 className="review-textarea"
                             />
                         </div>
@@ -94,13 +94,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onRateMovie }) => {
                                 onClick={handleRateMovie}
                                 disabled={userRating === 0}
                             >
-                                Puanı Gönder
+                                Submit Rating
                             </button>
                             <button 
                                 className="cancel-btn"
                                 onClick={() => setShowRatingForm(false)}
                             >
-                                İptal
+                                Cancel
                             </button>
                         </div>
                     </div>

@@ -1,18 +1,353 @@
 .App {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
 }
 
-.movie-list {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+.app-header {
+  margin-bottom: 30px;
+  color: white;
 }
 
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Movie List Container */
+.movie-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.filter-controls, .sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-select, .sort-select {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Movie Stats */
+.movie-stats {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.movie-stats p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Movie Card */
 .movie-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    width: 150px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.movie-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.movie-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-image {
+  transform: scale(1.05);
+}
+
+.genre-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.movie-content {
+  padding: 20px;
+}
+
+.movie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.movie-title {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: bold;
+  flex: 1;
+  text-align: left;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.movie-info {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.movie-year {
+  color: #666;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.movie-description {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.movie-rating, .user-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.rating-label {
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+  min-width: 80px;
+}
+
+.stars {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.rating-text {
+  color: #666;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.movie-actions-bottom {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.rate-btn, .details-btn {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rate-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+}
+
+.rate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.details-btn {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.details-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Rating Form */
+.rating-form {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 10px;
+  border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.rating-input, .review-input {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.rating-input label, .review-input label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.rating-number {
+  width: 80px;
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.review-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.rating-form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.submit-rating-btn, .cancel-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-rating-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+}
+
+.submit-rating-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.submit-rating-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+/* No Movies */
+.no-movies {
+  text-align: center;
+  padding: 50px;
+  color: white;
+  font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .movie-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .movie-actions-bottom {
+    flex-direction: column;
+  }
+  
+  .rating-form-actions {
+    flex-direction: column;
+  }
 }
